@@ -1,0 +1,31 @@
+body {
+  padding: 10px;
+  font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
+}
+
+div2{
+  border: 1px solid red;
+}
+h1, h3{
+  text-align: center;
+}
+#prvi_red, #drugi_red{
+  margin-top: 2%;
+}
+#drugi_red {
+  bor2der: 1px solid dimgrey;
+}
+#drugi_red > div {
+  bord2er: 1px solid red;
+}
+#hg {
+  background-color: lightgrey;
+  bord2er: 1px solid red;
+}
+#boxovi {
+  border: 1px solid lightgrey;
+  marg2in: 5px;
+}
+#drugi > .col {
+  border: 1px solid red;
+}

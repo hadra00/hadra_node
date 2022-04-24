@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Objavi artikal</title>
+    <link rel='stylesheet' href='/stylesheets/objaviArtikal.css' />
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+    <!--<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js" integrity="sha384-IQsoLXl5PILFhosVNubq5LC7Qb9DXgDA9i+tQ8Zj3iwWAwPtgFTxbJ8NT4GN1R8p" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.min.js" integrity="sha384-cVKIPhGWiC2Al4u+LWgxfKTRIcfu0JTxR+EQDz/bgldoEyl4H0zUF0QKbrJ0EcQF" crossorigin="anonymous"></script>
+  --><link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Dongle&family=Roboto:ital,wght@1,100;1,300&display=swap" rel="stylesheet">
+  </head>
+  <body>
+  <div class="container-fluid">
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+      <div class="container-fluid">
+        <a class="navbar-brand" href="#" id="hadra">Hadra-trade</a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNavDropdown">
+          <ul class="navbar-nav">
+
+            <li class="nav-item">
+              <a class="nav-link" href="/trgovine">Trgovine</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="trgovac/korpa">Korpa</a>
+            </li>
+            <li class="nav-item dropdown">
+              <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                Registracija/Login
+              </a>
+              <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                <li><a class="dropdown-item" href="#">Login</a></li>
+                <li><a class="dropdown-item" href="#" onclick="location.href='/registracijaTrgovca'">Registruj trgovinu</a></li>
+                <li><a class="dropdown-item" href="#" onclick="location.href='/registracijaKupca'">Registruj kupca</a></li>
+              </ul>
+            </li>
+            <%if(idkorisnika != null) {%>
+              <li class="nav-item">
+              <a class="nav-link" href="/logout">Odjavite se</a>
+              </li>
+            <%}%>
+
+          </ul>
+        </div>
+      </div>
+    </nav>
+
+
+
+    <div class="container">
+      <div class="row justify-content-center">
+        <div class="col-6">
+          <h1>Objavite artikal</h1>
+        </div>
+      </div>
+      <div class="row justify-content-center">
+          <div class="col-9">
+            <form method="post" action="/trgovac/objaviArtikal" enctype="multipart/form-data">
+
+              <div class="mb-3">
+                <label class="form-label">Naziv Vašeg artikla</label>
+                <input type="text" class="form-control" id="naziv" name="naziv">
+              </div>
+              <div class="mb-3">
+                <select class="form-select" aria-label="Default select example" name="selekt">
+                  <option selected>Izaberite kategoriju</option>
+                  <%for(let i=0; i<objekat.length; i++) {%>
+                    <option value='<%=objekat[i].id%>' ><%=objekat[i].naziv%></option>
+                  <%}%>
+                </select>
+              </div>
+
+              <div class="mb-3">
+                <label class="form-label">Unesite cijenu</label>
+                <input type="number" class="form-control" id="cijena" name="cijena">
+              </div>
+              <div class="form-group">
+                <label for="exampleFormControlTextarea1">Unesite opis artikla</label>
+                <textarea class="form-control" id="exampleFormControlTextarea1" rows="3" name="opis"></textarea>
+              </div>
+
+              <div class="mb-3">
+                <label class="form-label" for="customFile">Dodajte sliku artikla</label>
+                <input type="file" name="slika" class="form-control" id="customFile" />
+              </div>
+              <div class="mb-3">
+                <label class="form-label">Unesite količinu</label>
+                <input type="number" class="form-control" id="kolicina" name="kolicina">
+              </div>
+
+              <button type="submit" class="btn btn-primary">Objavite</button>
+            </form>
+          </div>
+
+      </div>
+
+
+
+
+
+
+
+        </div>
+      </div>
+
+    </div>
+
+  </body>
+</html>

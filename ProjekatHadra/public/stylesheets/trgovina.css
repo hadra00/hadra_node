@@ -1,0 +1,24 @@
+body {
+  padding: 10px;
+  font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
+}
+
+div2{
+  border: 1px solid red;
+}
+h1, h3{
+  text-align: center;
+}
+#prvi{
+  border-bottom: 1px solid rebeccapurple;
+  margin-bottom: 20px;
+}
+#polje{
+  border: 1px solid rebeccapurple;
+  border-radius: 10px;
+  margin-bottom: 10px;
+  height: 30px;
+  text-align: center;
+  font-family: 'Roboto', sans-serif;
+  color: indigo;
+}

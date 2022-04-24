@@ -1,0 +1,64 @@
+body {
+  padding: 10px;
+  font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
+  background-color: green;
+}
+
+di2v{
+  border: 1px solid red;
+}
+
+#prvi_red{
+  margin-bottom: 2%;
+}
+#boxovi {
+  border: 1px solid lightgrey;
+  margin-bottom: 1%;
+}
+#drugi > .col {
+  border: 1px solid red;
+}
+.slika {
+  height: 30vh;
+  bord2er: 1px solid red;
+}
+.slika img{
+  height: 28vh;
+  width: 100vw;
+}
+#ispod div{
+  border: 1px solid lightgray;
+  border-radius: 10px;
+}
+#ispod {
+  margin-top: 2%;
+}
+#hadra {
+  color: lightseagreen;
+  font-weight: bold;
+}
+/*p {
+  margin: auto;
+  width: 50%;
+  padding: 7px;
+}*/
+#detaljno {
+  text-decoration: none;
+  text-align: center;
+  color: darkred;
+}
+#nazivtrgovine {
+  color: #eb347a;
+}
+a {
+  color: red;
+}
+#naziv {
+  text-decoration: none;
+  color: #eb347a;
+}
+#logout {
+  color: black;
+}
+
+

@@ -1,0 +1,31 @@
+body {
+  padding: 10px;
+  font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
+}
+#emailHelp{
+  color: red;
+}
+#hadra{
+  font-style: italic;
+}
+di2v{
+  border: 1px solid red;
+}
+h1, h3{
+  text-align: center;
+  color: blueviolet;
+  font-style: italic;
+  padding: 10px;
+}
+.container {
+  border: 1px solid blueviolet;
+  border-radius: 10px;
+  margin-top: 3%;
+}
+#login {
+  margin-bottom: 3%;
+}
+#btn {
+  margin-top: 3%;
+  margin-bottom: 3%;
+}

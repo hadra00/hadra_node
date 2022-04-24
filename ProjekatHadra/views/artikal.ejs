@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Artikal</title>
+    <link rel='stylesheet' href='/stylesheets/artikal.css' />
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+    <!--<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js" integrity="sha384-IQsoLXl5PILFhosVNubq5LC7Qb9DXgDA9i+tQ8Zj3iwWAwPtgFTxbJ8NT4GN1R8p" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.min.js" integrity="sha384-cVKIPhGWiC2Al4u+LWgxfKTRIcfu0JTxR+EQDz/bgldoEyl4H0zUF0QKbrJ0EcQF" crossorigin="anonymous"></script>
+  --><script src="https://code.jquery.com/jquery-3.6.0.js" integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk=" crossorigin="anonymous"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Dongle&family=IBM+Plex+Sans+Thai+Looped&family=Outfit:wght@300&family=Roboto:ital,wght@1,100;1,300&display=swap" rel="stylesheet">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <script>
+      function objavi_komentar(id) {
+        $.ajax({
+          url: "/artikal/"+id+"/objaviKomentar",
+          method: "POST",
+          success: function (result) {
+            console.info(result);
+            alert("Komentar uspješno objavljen");
+          }
+        })
+      }
+      function dodaj_u_korpu(id, t_id) {
+        $.ajax({
+          url: "/artikal/"+id+"/"+t_id+"/dodajUKorpu",
+          method: "POST",
+          success: function (result) {
+            console.info(result);
+            alert("Artikal uspješno dodan u korpu");
+          }
+        })
+      }
+    </script>
+  </head>
+  <body>
+  <div class="container-fluid">
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+      <div class="container-fluid">
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNavDropdown">
+          <ul class="navbar-nav">
+            <li class="nav-item">
+              <a class="nav-link" href="#" id="nazivtrgovine"><strong><%=usernamekorisnika%></strong></a>
+            </li>
+            <%if(idkorisnika > 142) {%>
+              <li class="nav-item">
+                <a class="nav-link active" aria-current="page" href="/pocetna">Pocetna</a>
+              </li>
+            <%}%>
+            <li class="nav-item">
+              <a class="nav-link" href="/trgovine">Trgovine</a>
+            </li>
+            <%if(idkorisnika > 142) {%>
+              <li class="nav-item">
+                <a class="nav-link" href="/korpa">Korpa</a>
+              </li>
+            <%}%>
+            <%if(idkorisnika < 142) {%>
+              <li class="nav-item">
+                <a class="nav-link" href="/trgovac/korpa">Korpa</a>
+              </li>
+            <%}%>
+            <li class="nav-item dropdown">
+              <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                Registracija/Login
+              </a>
+              <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                <li><a class="dropdown-item" href="/login">Login</a></li>
+                <li><a class="dropdown-item" href="#" onclick="location.href='/registracijaTrgovca'">Registruj trgovinu</a></li>
+                <li><a class="dropdown-item" href="#" onclick="location.href='/registracijaKupca'">Registruj kupca</a></li>
+              </ul>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="/trgovine/<%=obj[0].trgovina_id%>" id="nazivtrgovine"><strong><%=obj[0].naziv_trgovine%></strong></a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="/logout" id="logout"><strong>Odjavi se</strong></a>
+            </li>
+
+
+          </ul>
+        </div>
+      </div>
+    </nav>
+    <div class="container">
+      <!--<div class="row justify-content-center">
+          <div class="col-6">
+          </div>
+        </div>-->
+      <!-- Search ---------------------------------->
+      <div class="row" id="prvi_red">
+        <div class="row justify-content-center">
+          <div class="col-10 col-lg-6 col-md-6">
+            <div class="input-group rounded">
+              <input type="search" class="form-control rounded" placeholder="Search" aria-label="Search"
+                     aria-describedby="search-addon" />
+              <span class="input-group-text border-0" id="search-addon">
+                <button class="btn btn-outline-secondary" type="button" id="inputGroupFileAddon04">
+                  Search
+                </button>
+                </span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="row" id="drugi_red">
+
+      <div class="col-6 col-lg-6 col-md-6" id="info">
+        <div class="row"><strong><%=obj[0].naziv%></strong></div>
+        <div class="row"><strong>Cijena: <%=obj[0].cijena%> KM</strong></div>
+        <div class="row"><strong>Količina: <%=obj[0].kolicina%></strong></div>
+        <div class="row"><strong>Ocjena: <%=obj[0].ocjena%></strong></div>
+        <%if(idkorisnika > 142) {%>
+          <div class="row justify-content-center">
+              <button type="button" class="btn btn-dark" onclick="dodaj_u_korpu(<%=obj[0].id%>, <%=obj[0].trgovina_id%>)">Dodaj u korpu</button>
+          </div>
+        <%}%>
+      </div>
+      <div class="col-6 col-lg-6 col-md-6">
+          <img src="/images/<%=obj[0].slika%>" class="img-fluid img-thumbnail" alt="Web shop">
+      </div>
+    </div>
+    <div class="row" id="opis">
+      <div class="row justify-content-center"><div class="row"><legend>Detaljan opis:</legend><%=obj[0].opis%></div></div>
+    </div>
+    <div class="treci_red">
+      <div>
+        <h3>Komentari/Recenzije</h3>
+      </div>
+      <section>
+        <div class="container">
+          <div class="row">
+            <div class="col-sm-5 col-md-6 col-12 pb-4">
+              <%for(let i=0; i<obj2.length; i++) {%>
+              <div class="row">
+                <div class="darker mt-4 text-justify"> <img src="/images/<%=obj2[i].slika%>" alt="" class="rounded-circle" width="40" height="40">
+                  <h4><%=obj2[i].ime%> <%=obj2[i].prezime%> </h4> <span><%=obj2[i].datum%></span> <br>
+                  <p><%=obj2[i].tekst%></p>
+                </div>
+              </div>
+              <%}%>
+            </div>
+            <%if(idkorisnika > 142) {%>
+              <div class="col-lg-4 col-md-5 col-sm-4 offset-md-1 offset-sm-1 col-12 mt-4">
+                <form id="algin-form" method="post" action="/artikal/<%=obj[0].id%>/objaviKomentar">
+                  <div class="form-group">
+                    <h4>Ostavi komentar</h4> <label for="message">Komentar</label> <textarea name="msg" id="" msg cols="30" rows="5" class="form-control" style="background-color: lightblue;"></textarea>
+                  </div>
+                  <div class="form-group"> <button onclick="objavi_komentar(<%=obj[0].id%>)" id="post" class="btn">Objavi Komentar</button> </div>
+                </form>
+              </div>
+            <%}%>
+          </div>
+        </div>
+      </section>
+    </div>
+
+
+
+
+
+
+  </body>
+</html>
