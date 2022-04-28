@@ -46,9 +46,7 @@ app.use(function (req, res, next) {
         console.log("samo da ispisem decoded token: ", decodedToken);
       res.locals.idkorisnika = decodedToken.id;
       res.locals.usernamekorisnika = decodedToken.korisnicko;
-      console.log('DECOOODED TOKEEEEN token: ', decodedToken);
-      console.log('DECOOODED DRUGII PUUT TOKEEEEN token: ', res.locals.idkorisnika);
-      console.log('DECOOODED DRUGII PUUT TOKEEEEN token: ', res.locals.usernamekorisnika);
+      
       next();
     }
   })
