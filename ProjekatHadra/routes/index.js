@@ -135,7 +135,7 @@ var db = {
         console.log('Imeee: ', ime);
 
         //sad for petljom interesi.length toliko upita da se doda u tabelu kupci_interesi kupac.id|dugme[i]
-
+        //Nije dobra praksa zbog too many conections, treba samo napraviti na bazi proceduru koja ce proc n-puta i ubaciti interese
         await pool.query(`insert into kupci(username, lozinka, ime, prezime, email, telefon, slika)
         values($1, $2, $3, $4, $5, $6, $7)`,
             [kupac.username, kupac.lozinka, kupac.ime, kupac.prezime, kupac.email, kupac.telefon, kupac.slika],
@@ -167,6 +167,7 @@ var db = {
     },
     ubaciInterese: async function (req, res, next) {
         console.log('sultaaaaan: ', id_kupca);
+        //treba samo napraviti na bazi proceduru koja ce proc n-puta i ubaciti interese
         for (let i = 0; i < niz_interesa.length; i++) {
             await pool.query(`insert into kupci_interesi(kupac_id, kategorija_id)
             values($1, $2)`, [id_kupca, niz_interesa[i]],
